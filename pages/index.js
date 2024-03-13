@@ -18,15 +18,17 @@ export default function Index({ posts, globalData }) {
         <p className="my-20 text-base">
           Have you ever found yourself rampant in the vast ocean of knowledge,
           overwhelmed by the sheer expanse of what there is to learn and
-          understand? You're not alone. I've stood precisely where you are,
-          pondering where to direct my focus in this endless sea of information.
+          understand? You&#39;re not alone. I&#39;ve stood precisely where you
+          are, pondering where to direct my focus in this endless sea of
+          information.
           <br />
           This blog emerges as a sanctuary for curiosity, a space dedicated to
-          exploring these questions and charting a course through life's most
-          vital subjects. While my journey is profoundly personal and shaped by
-          my unique experiences, it's my hope that the insights and discoveries
-          shared here will resonate with you, offering guidance and inspiration
-          as you navigate your own path of learning and understanding in life.
+          exploring these questions and charting a course through life&#39;s
+          most vital subjects. While my journey is profoundly personal and
+          shaped by my unique experiences, it&#39;s my hope that the insights
+          and discoveries shared here will resonate with you, offering guidance
+          and inspiration as you navigate your own path of learning and
+          understanding in life.
         </p>
         <ul className="w-full">
           {posts.map((post) => (
