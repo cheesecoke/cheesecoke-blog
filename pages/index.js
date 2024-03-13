@@ -17,6 +17,19 @@ export default function Index({ posts, globalData }) {
         <h1 className="text-3xl lg:text-5xl text-center mb-12">
           {globalData.blogTitle}
         </h1>
+        <p className="my-20 text-base">
+          Have you ever found yourself rampant in the vast ocean of knowledge,
+          overwhelmed by the sheer expanse of what there is to learn and
+          understand? You're not alone. I've stood precisely where you are,
+          pondering where to direct my focus in this endless sea of information.
+          <br />
+          This blog emerges as a sanctuary for curiosity, a space dedicated to
+          exploring these questions and charting a course through life's most
+          vital subjects. While my journey is profoundly personal and shaped by
+          my unique experiences, it's my hope that the insights and discoveries
+          shared here will resonate with you, offering guidance and inspiration
+          as you navigate your own path of learning and understanding in life.
+        </p>
         <ul className="w-full">
           {posts.map((post) => (
             <li
@@ -27,7 +40,7 @@ export default function Index({ posts, globalData }) {
                 as={`/posts/${post.filePath.replace(/\.mdx?$/, '')}`}
                 href={`/posts/[slug]`}
               >
-                <a className="py-6 lg:py-10 px-6 lg:px-16 block focus:outline-none focus:ring-4">
+                <div className="py-6 lg:py-10 px-6 lg:px-16 block focus:outline-none focus:ring-4">
                   {post.data.date && (
                     <p className="uppercase mb-3 font-bold opacity-60">
                       {post.data.date}
@@ -40,7 +53,7 @@ export default function Index({ posts, globalData }) {
                     </p>
                   )}
                   <ArrowIcon className="mt-4" />
-                </a>
+                </div>
               </Link>
             </li>
           ))}
