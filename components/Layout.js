@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { useEffect } from 'react';
 import styles from './Layout.module.css';
+import Navigation from './Navigation';
 
 export function GradientBackground({ variant, className }) {
   const classes = classNames(
@@ -51,6 +52,7 @@ export default function Layout({ children }) {
 
   return (
     <div className="relative pb-24 overflow-hidden">
+      <Navigation />
       <div className="flex flex-col items-center max-w-2xl w-full mx-auto">
         {children}
       </div>
