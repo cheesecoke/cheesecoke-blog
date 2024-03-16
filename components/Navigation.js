@@ -4,8 +4,8 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 
 const navigation = [
-  { name: 'Home', href: '#', current: true },
-  { name: 'All Posts', href: '#', current: false },
+  { name: 'Home', href: '/', current: true },
+  { name: 'All Posts', href: '/allposts', current: false },
   { name: 'Saved', href: '#', current: false },
   { name: 'Daily', href: '#', current: false },
 ];
