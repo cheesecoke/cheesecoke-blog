@@ -34,6 +34,12 @@ export default function AllPosts({ posts, globalData }) {
             >
               Coding
             </li>
+            <li
+              className="cursor-pointer"
+              onClick={() => handleFilterChange('tech')}
+            >
+              Tech
+            </li>
           </ul>
         </aside>
         <div className="w-3/4">

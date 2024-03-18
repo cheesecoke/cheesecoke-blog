@@ -1,9 +1,10 @@
-const breadcrumbs = [
-  { path: '/allposts', label: 'All Posts' },
-  { path: '#', label: '' },
-];
-
-const BreadCrumbs = (selectedLabel) => {
+const BreadCrumbs = ({ selectedLabel }) => {
+  const capitalized =
+    selectedLabel.charAt(0).toUpperCase() + selectedLabel.slice(1);
+  const breadcrumbs = [
+    { path: '/allposts', label: 'All Posts' },
+    { path: '#', label: capitalized },
+  ];
   return (
     <nav aria-label="breadcrumb">
       <ol className="flex list-none p-0 text-base">
@@ -30,7 +31,7 @@ const BreadCrumbs = (selectedLabel) => {
 export default function PageHeader({ selectedLabel }) {
   return (
     <header className="w-full mb-6 mt-4">
-      <BreadCrumbs selectedLabel={selectedLabel} breadcrumbs={breadcrumbs} />
+      <BreadCrumbs selectedLabel={selectedLabel} />
       <h1 className="font-bold text-4xl mb-4 justify-self-start">All Posts</h1>
       <div className="w-full border-b-2" />
     </header>
