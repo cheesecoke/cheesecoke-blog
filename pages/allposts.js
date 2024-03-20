@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { getPosts } from '../utils/mdx-utils';
-import { filterPostsByLabel } from '../utils/client/filter_utils.js';
+import {
+  filterPostsByLabel,
+  getCategoriesByLabel,
+} from '../utils/client/filter_utils.js';
 
 import Footer from '../components/Footer';
 import PageHeader from '../components/PageHeader';
@@ -13,37 +16,49 @@ import SEO from '../components/SEO';
 export default function AllPosts({ posts, globalData }) {
   const [filteredPosts, setFilteredPosts] = useState(posts);
   const [selectedLabel, setSelectedLabel] = useState('');
+  const labels = getCategoriesByLabel(posts);
 
   const handleFilterChange = (label) => {
     setSelectedLabel(label);
-    const filtered = filterPostsByLabel(posts, label);
-    setFilteredPosts(filtered);
+
+    if (label === '') {
+      setFilteredPosts(posts);
+    } else {
+      const filtered = filterPostsByLabel(posts, label);
+      setFilteredPosts(filtered);
+    }
   };
 
   return (
     <Layout>
       <SEO title={globalData.name} description={globalData.blogTitle} />
       <main className="flex w-full">
-        <aside className="w-1/4 mt-4 mr-4 p-4 rounded-lg backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 transition-all border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10">
+        <aside className="h-min sm:block hidden sm:w-1/4 mt-4 mr-4 p-4 rounded-lg backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 transition-all border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10">
           <h2 className="font-bold mb-4">Categories</h2>
-          <ul>
-            <li
-              className="cursor-pointer"
-              onClick={() => handleFilterChange('coding')}
-            >
-              Coding
-            </li>
-            <li
-              className="cursor-pointer"
-              onClick={() => handleFilterChange('tech')}
-            >
-              Tech
-            </li>
+          <ul role="list" className="divide-y divide-gray-100 cursor-pointer">
+            {labels.map((category) => (
+              <li
+                key={category}
+                className="flex justify-between gap-x-6 py-5 text-black dark:text-white"
+                onClick={() => handleFilterChange(category)}
+              >
+                <div className="flex min-w-0 gap-x-4">
+                  <div className="min-w-0 flex-auto">
+                    <p className="text-sm font-semibold leading-6">
+                      {category}
+                    </p>
+                  </div>
+                </div>
+              </li>
+            ))}
           </ul>
         </aside>
-        <div className="w-3/4">
-          <PageHeader selectedLabel={selectedLabel} />
-          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-2">
+        <div className="w-full sm:w-3/4">
+          <PageHeader
+            handleFilterChange={handleFilterChange}
+            selectedLabel={selectedLabel}
+          />
+          <ul className="grid sm:grid-cols-2 grid-cols-1 gap-2">
             {filteredPosts.map((post) => (
               <li
                 key={post.filePath}
