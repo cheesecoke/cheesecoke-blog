@@ -14,3 +14,7 @@ export const getCategoriesByLabel = (posts) => {
 
   return [...categories];
 };
+
+export function capitalize(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
