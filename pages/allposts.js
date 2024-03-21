@@ -8,6 +8,7 @@ import {
 
 import Footer from '../components/Footer';
 import PageHeader from '../components/PageHeader';
+import Pagination from '../components/Pagination.js';
 import Layout, { GradientBackground } from '../components/Layout';
 import ArrowIcon from '../components/ArrowIcon';
 import { getGlobalData } from '../utils/global-data';
@@ -94,6 +95,7 @@ export default function AllPosts({ posts, globalData }) {
         </div>
       </main>
 
+      <Pagination totalItems={posts.length} />
       <Footer copyrightText={globalData.footerText} />
       <GradientBackground
         variant="large"
