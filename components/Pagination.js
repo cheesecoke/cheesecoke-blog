@@ -34,9 +34,11 @@ export default function Pagination({
 
       <div className="items-center">
         <p className="text-sm dark:text-white text-gray-700">
-          Showing page <span className="font-medium">{currentPage}</span> of{' '}
+          Page <span className="font-medium">{currentPage}</span> of{' '}
           <span className="font-medium">{totalPages}</span>{' '}
-          <span className="font-medium">- {totalItems} total posts </span>{' '}
+          <span className="font-medium hidden sm:inline-block">
+            - {totalItems} total posts{' '}
+          </span>{' '}
         </p>
       </div>
       <button
