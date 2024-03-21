@@ -17,7 +17,12 @@ import SEO from '../components/SEO';
 export default function AllPosts({ posts, globalData }) {
   const [filteredPosts, setFilteredPosts] = useState(posts);
   const [selectedLabel, setSelectedLabel] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
   const labels = getCategoriesByLabel(posts);
+  const perPage = 10;
+  const indexOfLastPost = currentPage * perPage;
+  const indexOfFirstPost = indexOfLastPost - perPage;
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   const handleFilterChange = (label) => {
     setSelectedLabel(label);
@@ -60,7 +65,7 @@ export default function AllPosts({ posts, globalData }) {
             selectedLabel={selectedLabel}
           />
           <ul className="grid sm:grid-cols-2 grid-cols-1 gap-2">
-            {filteredPosts.map((post) => (
+            {currentPosts.map((post) => (
               <li
                 key={post.filePath}
                 className="rounded-lg backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 hover:bg-opacity-20 dark:hover:bg-opacity-50 transition-all border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10 hover:border-opacity-100"
@@ -95,7 +100,12 @@ export default function AllPosts({ posts, globalData }) {
         </div>
       </main>
 
-      <Pagination totalItems={posts.length} />
+      <Pagination
+        totalItems={filteredPosts.length}
+        itemsPerPage={perPage}
+        currentPage={currentPage}
+        onPageChange={(page) => setCurrentPage(page)}
+      />
       <Footer copyrightText={globalData.footerText} />
       <GradientBackground
         variant="large"
