@@ -1,18 +1,20 @@
-export const filterPostsByLabel = (posts, selectedLabel) => {
-  if (selectedLabel === '') return posts;
-  return posts.filter((post) => post.data.labels.includes(selectedLabel));
-};
-
-export const getCategoriesByLabel = (posts) => {
-  const categories = new Set();
+export const getDataByKey = (posts, key) => {
+  const data = new Set();
 
   posts.forEach((post) => {
-    post.data.labels.forEach((label) => {
-      categories.add(label);
-    });
+    const keyValue = post.data[key];
+    if (keyValue !== undefined) {
+      if (Array.isArray(keyValue)) {
+        keyValue.forEach((i) => {
+          data.add(i);
+        });
+      } else {
+        data.add(keyValue);
+      }
+    }
   });
 
-  return [...categories];
+  return [...data];
 };
 
 export function capitalize(word) {
