@@ -7,7 +7,7 @@ export default function Accordion({
   handleSelection,
   selectedFilters,
 }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <div className={`${isOpen ? 'border-b' : ''} overflow-hidden`}>
@@ -16,7 +16,9 @@ export default function Accordion({
         onClick={() => setIsOpen(!isOpen)}
       >
         {title}
-        <ChevronDown className="w-6 h-6" />
+        <ChevronDown
+          className={`w-6 h-6 transform ${isOpen ? 'rotate-180' : ''}`}
+        />
       </button>
       {isOpen && (
         <div className="p-4">
