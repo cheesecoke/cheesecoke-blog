@@ -20,6 +20,8 @@ exports.COLOR_THEMES = {
   netlify: {
     colors: {
       primary: '#00A354',
+      'primary-200': '#00bd61',
+      'primary-300': '#008a47',
       'gradient-1': '#00F0FF',
       'gradient-2': '#00F0FF',
       'gradient-3': '#FAFF00',
@@ -29,6 +31,8 @@ exports.COLOR_THEMES = {
   reddie: {
     colors: {
       primary: '#FF4D4D',
+      'primary-200': '#FF4D4D',
+      'primary-300': '#ff3434',
       'gradient-1': '#FFC700',
       'gradient-2': '#FF85DD',
       'gradient-3': '#FF85DD',
