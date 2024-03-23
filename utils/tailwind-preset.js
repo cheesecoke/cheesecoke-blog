@@ -24,8 +24,6 @@ const themesConfig = plugin(function ({ addComponents }) {
   cssVars['--font-primary'] = FONT_THEMES[FONT_PRIMARY];
   cssVars['--font-secondary'] = FONT_THEMES[FONT_SECONDARY];
 
-  console.log('cssvars:', cssVars);
-
   const themeCompiled = {
     '.theme-compiled': cssVars,
   };
