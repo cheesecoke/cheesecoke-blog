@@ -9,7 +9,6 @@ import ThemeSwitcher from './ThemeSwitcher';
 const navigation = [
   { name: 'Home', href: '/', current: true },
   { name: 'All Posts', href: '/allposts', current: false },
-  { name: 'Saved', href: '#', current: false },
   { name: 'Daily', href: '#', current: false },
 ];
 
