@@ -38,26 +38,17 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-      colors: {
-        primary: 'var(--color-primary)',
-        'gradient-1': 'var(--color-gradient-1)',
-        'gradient-2': 'var(--color-gradient-2)',
-        'gradient-3': 'var(--color-gradient-3)',
-        'gradient-4': 'var(--color-gradient-4)',
-      },
+      colors: Object.keys(COLOR_THEMES[THEME].colors).reduce((acc, key) => {
+        acc[key] = `var(--color-${key})`;
+        return acc;
+      }, {}),
       fonts: {
         primary: 'var(--font-primary)',
         secondary: 'var(--font-secondary)',
       },
       theme: {
-        bejamas: {
-          colors: {
-            primary: '#FF8585',
-            'gradient-1': '#7d7aff',
-            'gradient-2': '#2121E2',
-            'gradient-3': '#FF76B8',
-            'gradient-4': '#001AFF',
-          },
+        reddie: {
+          colors: COLOR_THEMES[THEME].colors,
         },
       },
       typography(theme) {
